@@ -38,7 +38,7 @@ pipeline{
 			stage('Docker Deployment Stage'){ 
 			
 				steps{
-						bat 'docker build -t jklmendieta/java-jcms-ex-2-jpa --pull=true'
+						bat 'docker build -t jklmendieta/java-jcms-ex-2-jpa .'
 				}
 			
 			}
