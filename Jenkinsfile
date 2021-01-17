@@ -13,6 +13,17 @@ pipeline{
 			
 			}
 			
+			stage('Package Stage'){ 
+			
+				steps{
+						withMaven(maven:'maven_3_6_3'){
+						
+							bat 'mvn package'
+					}
+				}
+			
+			}
+			
 			stage('Testing Stage'){ 
 			
 				steps{
@@ -24,13 +35,10 @@ pipeline{
 			
 			}
 			
-			stage('Deployment Stage'){ 
+			stage('Docker Deployment Stage'){ 
 			
 				steps{
-						withMaven(maven:'maven_3_6_3'){
-						
-							bat 'mvn deploy'
-					}
+						bat 'docker build -t jklmendieta/java-jcms-ex-2-jpa --pull=true'
 				}
 			
 			}
